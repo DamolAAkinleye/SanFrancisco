@@ -1,0 +1,41 @@
+select pddistrict, category, count(*) as num
+from police_facttable fa, police_dim_barrio b, police_dim_categoria c
+where fa.iddireccion = b.id and fa.idcategory = c.id
+group by category, pddistrict
+
+
+select resolution, count(*) as num
+from fire_facttable tabla
+where (tabla.category = 'LARCENY/THEFT') 
+group by resolution
+
+
+select dayofweek, count(*) as num
+from police_facttable tabla
+group by dayofweek
+
+
+select month, count(*) as num
+from police_facttable tabla
+group by month
+
+
+select year, count(*) as num
+from police_facttable tabla
+group by year
+
+
+select barrio, count(*) as num
+from fire_facttable
+group by barrio
+
+
+select calltype, avg(tiempoRespuesta) as media, count(*) as num
+from fire_facttable
+group by calltype
+
+select calltype, battalion, count(*) as num
+from fire_facttable
+where battalion = 'B01' or battalion = 'B02' or battalion = 'B03' or battalion = 'B04' 
+group by calltype, battalion
+
